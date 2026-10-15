@@ -5,6 +5,9 @@
   "description": "Full-stack chess platform with AI, online rooms, accounts, saved games and leaderboard",
   "main": "server.js",
   "scripts": {"start": "node server.js", "dev": "node --watch server.js"},
+  "engines": {
+  "node": "20.x"
+},
   "engines": {"node": ">=20"},
   "dependencies": {
     "bcryptjs": "^2.4.3",
