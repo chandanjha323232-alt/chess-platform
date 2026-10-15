@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101713" />
+  <title>Checkmate — Chess Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Checkmate home"><span class="brand-mark">♞</span><span>checkmate<span class="brand-dot">.</span></span></a>
+    <nav class="main-nav"><button class="nav-link active" data-page="play">Play</button><button class="nav-link" data-page="leaderboard">Leaderboard</button><button class="nav-link" data-page="games">My games</button></nav>
+    <div class="account-area"><div id="user-pill" class="user-pill hidden"></div><button id="auth-open" class="button button-quiet">Sign in</button></div>
+  </header>
+
+  <main>
+    <section id="play-page" class="page active-page">
+      <div class="hero-copy"><div class="eyebrow"><span class="live-dot"></span> YOUR NEXT MOVE STARTS HERE</div><h1>Think ahead.<br/><span>Play beautifully.</span></h1><p>A calmer place to sharpen your game, challenge the machine, and meet worthy opponents.</p></div>
+      <div class="play-layout">
+        <section class="board-panel">
+          <div class="board-topline"><div class="player-chip"><div class="avatar avatar-light">♔</div><div><strong id="top-player">White</strong><small id="top-subtitle">Your side</small></div></div><div id="game-status" class="status-pill"><span class="status-dot"></span> White to move</div></div>
+          <div class="board-wrap"><div id="board" class="board" role="grid" aria-label="Chess board"></div><div id="promotion-modal" class="promotion-modal hidden"><div class="promotion-card"><strong>Promote pawn</strong><div id="promotion-options" class="promotion-options"></div></div></div></div>
+          <div class="board-bottomline"><div class="player-chip"><div class="avatar avatar-dark">♚</div><div><strong id="bottom-player">Black</strong><small id="bottom-subtitle">Opponent</small></div></div><div class="captured" id="captured-black" aria-label="Black captured pieces"></div></div>
+          <div class="board-actions"><button id="undo-btn" class="button button-quiet">↶ Undo</button><button id="flip-btn" class="button button-quiet">⇅ Flip board</button><button id="sound-btn" class="button button-quiet">♫ Sound on</button><button id="save-btn" class="button button-quiet">Save game</button></div>
+        </section>
+        <aside class="side-panel">
+          <div class="panel-heading"><div><span class="eyebrow">GAME ROOM</span><h2>Choose your match</h2></div><span class="sparkle">✳</span></div>
+          <div class="mode-tabs"><button class="mode-tab active" data-mode="ai">vs Computer</button><button class="mode-tab" data-mode="online">Online</button><button class="mode-tab" data-mode="local">2 Players</button></div>
+          <div id="ai-controls" class="mode-content"><label class="field-label" for="difficulty">Opponent strength</label><select id="difficulty" class="field"><option value="1">Casual · Beginner</option><option value="2" selected>Club player · Medium</option><option value="3">Challenger · Hard</option></select><label class="field-label" for="color-choice">Play as</label><select id="color-choice" class="field"><option value="w">White — move first</option><option value="b">Black — move second</option></select><button id="new-ai-btn" class="button button-primary button-full">Start new game <span>→</span></button><p class="microcopy">Computer moves are calculated locally in your browser.</p></div>
+          <div id="online-controls" class="mode-content hidden"><p class="mode-description">Create a room and share its code, or join a friend's room.</p><button id="create-room-btn" class="button button-primary button-full">＋ Create a room</button><div class="room-divider"><span>or join a room</span></div><div class="join-row"><input id="room-code" class="field" maxlength="6" placeholder="ROOM CODE"/><button id="join-room-btn" class="button button-secondary">Join</button></div><div id="room-share" class="room-share hidden"><span>Your room code</span><strong id="room-code-display"></strong><button id="copy-room-btn" class="button button-quiet">Copy code</button></div><p class="microcopy">Online rooms need the server to stay running.</p></div>
+          <div id="local-controls" class="mode-content hidden"><p class="mode-description">Play face-to-face on the same screen. Pass the device after every move.</p><button id="new-local-btn" class="button button-primary button-full">Start local match <span>→</span></button></div>
+          <div class="move-panel"><div class="move-panel-heading"><h3>Move history</h3><span id="move-count" class="count-badge">0 moves</span></div><div id="move-list" class="move-list"><div class="empty-state"><span>♙</span><p>Your first move is waiting.</p></div></div><div class="move-footer"><button id="resign-btn" class="text-button">Resign game</button><button id="download-pgn-btn" class="text-button">Export PGN ↗</button></div></div>
+        </aside>
+      </div>
+      <div class="feature-strip"><div><span class="feature-icon">♟</span><strong>Play your way</strong><p>Computer, friend, or local two-player.</p></div><div><span class="feature-icon">⌁</span><strong>Track your progress</strong><p>Save games and review your history.</p></div><div><span class="feature-icon">♛</span><strong>Climb the ranks</strong><p>Earn rating points as you play.</p></div></div>
+    </section>
+
+    <section id="leaderboard-page" class="page"><div class="page-heading"><div class="eyebrow">THE CLUB</div><h1>Leaderboard<span class="brand-dot">.</span></h1><p>Every great player started with a single move.</p></div><div class="table-card"><div class="table-heading"><h2>Top players</h2><span class="microcopy">Updated from saved results</span></div><div id="leaderboard-content" class="table-scroll"><div class="loading-state">Loading players…</div></div></div></section>
+
+    <section id="games-page" class="page"><div class="page-heading"><div class="eyebrow">YOUR JOURNEY</div><h1>My games<span class="brand-dot">.</span></h1><p>Your saved matches, all in one place.</p></div><div class="table-card"><div class="table-heading"><h2>Recent matches</h2><button id="refresh-games-btn" class="button button-quiet">↻ Refresh</button></div><div id="games-content" class="table-scroll"><div class="empty-state"><span>♘</span><p>Sign in to see saved games.</p></div></div></div></section>
+  </main>
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">♞</span><span>checkmate<span class="brand-dot">.</span></span></a><span>Made for the love of the game.</span><span class="footer-right">Play fair. Think freely.</span></footer>
+
+  <div id="auth-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="auth-title"><div class="modal-backdrop" data-close="auth"></div><div class="modal-card"><button class="modal-close" data-close="auth" aria-label="Close">×</button><div class="modal-logo">♞</div><div class="eyebrow">WELCOME TO THE CLUB</div><h2 id="auth-title">Make your next move.</h2><p id="auth-description">Sign in to save games and build your rating.</p><div class="auth-tabs"><button class="auth-tab active" data-auth="login">Sign in</button><button class="auth-tab" data-auth="register">Create account</button></div><form id="auth-form"><label class="field-label" for="username">Username</label><input id="username" class="field" autocomplete="username" minlength="3" maxlength="18" required placeholder="e.g. knight_rider"/><label class="field-label" for="password">Password</label><input id="password" class="field" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters"/><div id="auth-error" class="form-error"></div><button class="button button-primary button-full" type="submit" id="auth-submit">Sign in <span>→</span></button></form><p class="fine-print">Your password is securely hashed. Never reuse a password from another site.</p></div></div>
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <script src="/socket.io/socket.io.js"></script><script type="module" src="/app.js"></script>
+</body></html>
